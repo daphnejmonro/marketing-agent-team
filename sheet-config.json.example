@@ -1,0 +1,54 @@
+{
+  "_instructions": "Fill in spreadsheet_id from your Google Sheet URL: docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit",
+  "spreadsheet_id": "YOUR_GOOGLE_SHEET_ID_HERE",
+
+  "_tab_instructions": "For each tab below, set 'tab' to your exact sheet tab name and 'cell' to the cell containing the value (e.g. B2). If you don't have a field yet, set it to null to skip it.",
+
+  "mappings": {
+    "kpis.mrr":                          { "tab": "KPIs", "cell": "B2" },
+    "kpis.mrr_growth_target_yoy_pct":    { "tab": "KPIs", "cell": "B3" },
+    "kpis.mrr_status":                   { "tab": "KPIs", "cell": "B4" },
+    "kpis.cac_actual":                   { "tab": "KPIs", "cell": "B5" },
+    "kpis.cac_budget":                   { "tab": "KPIs", "cell": "B6" },
+    "kpis.ltv":                          { "tab": "KPIs", "cell": "B7" },
+    "kpis.ltv_cac_ratio":                { "tab": "KPIs", "cell": "B8" },
+    "kpis.roas_actual":                  { "tab": "KPIs", "cell": "B9" },
+    "kpis.roas_target":                  { "tab": "KPIs", "cell": "B10" },
+    "kpis.organic_traffic_monthly":      { "tab": "KPIs", "cell": "B11" },
+    "kpis.organic_conversion_pct":       { "tab": "KPIs", "cell": "B12" },
+    "kpis.organic_conversion_target_pct":{ "tab": "KPIs", "cell": "B13" },
+    "kpis.organic_conversion_plateau_since": { "tab": "KPIs", "cell": "B14" },
+    "kpis.content_roi":                  { "tab": "KPIs", "cell": "B15" },
+
+    "content.output_this_month":         { "tab": "Content", "cell": "B2" },
+    "content.output_target_monthly":     { "tab": "Content", "cell": "B3" },
+    "content.review_cycle_days":         { "tab": "Content", "cell": "B4" },
+    "content.review_cycle_target_days":  { "tab": "Content", "cell": "B5" },
+    "content.pipeline_summary":          { "tab": "Content", "cell": "B6" },
+
+    "cro.active_tests":                  { "tab": "CRO", "cell": "B2" },
+    "cro.experiments_summary":           { "tab": "CRO", "cell": "B3" },
+
+    "affiliate.revenue_pct_mrr":         { "tab": "Affiliate", "cell": "B2" },
+    "affiliate.revenue_target_pct":      { "tab": "Affiliate", "cell": "B3" },
+    "affiliate.revenue_target_quarter":  { "tab": "Affiliate", "cell": "B4" },
+    "affiliate.revenue_eur_monthly":     { "tab": "Affiliate", "cell": "B5" },
+    "affiliate.revenue_target_eur_monthly": { "tab": "Affiliate", "cell": "B6" }
+  },
+
+  "_partner_instructions": "List your affiliate partners in the Affiliate tab starting at row 9. Columns: A=name, B=revenue_30d_eur, C=commission_pct",
+  "affiliate_partners_tab": "Affiliate",
+  "affiliate_partners_start_row": 9,
+
+  "_blockers_instructions": "List your current blockers in the Blockers tab, one per row in column A starting at row 2",
+  "blockers_tab": "Blockers",
+  "blockers_start_row": 2,
+
+  "_upcoming_instructions": "List upcoming events in column A of the Upcoming tab, one per row starting at row 2",
+  "upcoming_tab": "Upcoming",
+  "upcoming_start_row": 2,
+
+  "_priorities_instructions": "List strategic priorities in column A of the Priorities tab, one per row starting at row 2",
+  "priorities_tab": "Priorities",
+  "priorities_start_row": 2
+}
