@@ -1,0 +1,82 @@
+{
+  "company": "example-hosting.com",
+  "team": {
+    "total": 12,
+    "head_of_website_and_content": "Your Name",
+    "breakdown": {
+      "developers": 2,
+      "cro": 1,
+      "seo": 2,
+      "content_writers": 2,
+      "community": 1,
+      "product_marketing": 1,
+      "events": 1,
+      "operations": 1
+    }
+  },
+  "budget_monthly_eur": 150000,
+  "kpis": {
+    "mrr": 180000,
+    "mrr_growth_target_yoy_pct": 15,
+    "mrr_status": "on track",
+    "cac_actual": 48,
+    "cac_budget": 45,
+    "ltv": 1200,
+    "ltv_cac_ratio": "25:1",
+    "roas_actual": 3.8,
+    "roas_target": 4.0,
+    "organic_traffic_monthly": 145000,
+    "organic_conversion_pct": 3.8,
+    "organic_conversion_target_pct": 5.0,
+    "organic_conversion_plateau_since": "March",
+    "content_roi": "€3.20 per €1 spent"
+  },
+  "content": {
+    "output_this_month": 9,
+    "output_target_monthly": 12,
+    "review_cycle_days": 3.8,
+    "review_cycle_target_days": 3.0,
+    "pipeline_summary": "On pace but review cycle slightly slow. GEO and LLM content performing well."
+  },
+  "cro": {
+    "active_tests": 3,
+    "experiments_summary": "Testing homepage CTA, pricing table UX, and checkout flow. Expecting 0.3% lift."
+  },
+  "affiliate": {
+    "revenue_pct_mrr": 22,
+    "revenue_target_pct": 35,
+    "revenue_target_quarter": "Q4",
+    "revenue_eur_monthly": 39600,
+    "revenue_target_eur_monthly": 63000,
+    "top_partners": [
+      { "name": "hostinger.com", "revenue_30d_eur": 12000, "commission_pct": 15 },
+      { "name": "siteground.com", "revenue_30d_eur": 8500, "commission_pct": 12 },
+      { "name": "bluehost.com", "revenue_30d_eur": 6200, "commission_pct": 10 }
+    ]
+  },
+  "blockers": [
+    "CAC creeping up 5% YoY — need organic growth acceleration",
+    "Organic conversion plateau since March — CRO experiments needed",
+    "Content review cycle 3.8 days vs 3.0 day target — workflow optimization needed",
+    "Affiliate concentration: top 2 partners = 60% of revenue"
+  ],
+  "upcoming": [
+    "Q2 board presentation (May 30)",
+    "Summer content sprint (June-August)",
+    "New product launch (July 15)",
+    "Annual affiliate summit (September)"
+  ],
+  "strategic_priorities": [
+    "Accelerate organic traffic to 200K/month by Q4",
+    "Break 5% organic conversion plateau via CRO experiments",
+    "Diversify affiliate revenue (recruit 5 new partners)",
+    "Reduce CAC to €42 via organic growth",
+    "Scale content output to 14/month without sacrificing review quality"
+  ],
+  "competitors": [
+    { "name": "hostinger.com", "homepage": "Fast, AI builder focus", "pricing": "$1.99-$11.99/mo" },
+    { "name": "siteground.com", "homepage": "Performance + support", "pricing": "$2.99-$7.99/mo" },
+    { "name": "bluehost.com", "homepage": "WordPress optimized", "pricing": "$2.95-$13.95/mo" },
+    { "name": "dreamhost.com", "homepage": "Developer-friendly", "pricing": "$2.59-$4.95/mo" }
+  ]
+}
