@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require("dotenv").config();
 
 /**
  * harmover.com Spell Check Agent
@@ -34,13 +35,24 @@ const sheetIdArg  = args.find(a => a.startsWith("--sheet-id="));
 const saveReport  = args.includes("--save");
 const exportSheet = args.includes("--sheet") || !!sheetIdArg;
 
-const START_URL   = urlArg ? urlArg.split("=")[1] : "https://harmover.com";
 const MAX_PAGES   = maxArg ? parseInt(maxArg.split("=")[1]) : 500;
-const BASE_HOST   = new URL(START_URL).hostname;
-const BASE_ORIGIN = new URL(START_URL).origin;
 
-// Default spell check results sheet
-const SHEET_ID    = sheetIdArg ? sheetIdArg.split("=")[1] : "1hdMfBJr6yeAnhmSam7DcXajAbTfTzzPFA4e0iAE_Hqw";
+let START_URL, BASE_HOST, BASE_ORIGIN;
+
+async function resolveStartUrl() {
+  if (urlArg) return urlArg.split("=")[1];
+  const readline = require("readline");
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise(resolve => {
+    rl.question("  Which site would you like to spell-check? Enter a URL: ", answer => {
+      rl.close();
+      const url = answer.trim() || "https://hosting.com";
+      resolve(url.startsWith("http") ? url : `https://${url}`);
+    });
+  });
+}
+
+const SHEET_ID    = sheetIdArg ? sheetIdArg.split("=")[1] : null;
 
 // ── Colors ────────────────────────────────────────────────────────────────────
 const c = {
@@ -204,6 +216,10 @@ Rules:
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function run() {
+  START_URL  = await resolveStartUrl();
+  BASE_HOST   = new URL(START_URL).hostname;
+  BASE_ORIGIN = new URL(START_URL).origin;
+
   console.log(`\n${c.bright}${c.cyan}Spell Check Agent — ${BASE_HOST}${c.reset}`);
   console.log(`${c.dim}Max pages: ${MAX_PAGES}${c.reset}\n`);
 
@@ -349,6 +365,12 @@ async function run() {
 // ── Google Sheets export ──────────────────────────────────────────────────────
 
 async function exportToGoogleSheets(results, site) {
+  if (!SHEET_ID) {
+    err("No Sheet ID provided. Use --sheet-id=YOUR_GOOGLE_SHEET_ID to export.");
+    err("Example: node spell-check-agent.js --sheet --sheet-id=1abc123...");
+    return;
+  }
+
   const CREDENTIALS_PATH = path.join(__dirname, "credentials.json");
   if (!fs.existsSync(CREDENTIALS_PATH)) {
     warn("Skipping Google Sheets export — credentials.json not found.");
