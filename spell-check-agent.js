@@ -2,16 +2,16 @@
 require("dotenv").config();
 
 /**
- * harmover.com Spell Check Agent
+ * Spell Check Agent
  *
- * Crawls harmover.com, extracts visible text from each page,
+ * Crawls any site, extracts visible text from each page,
  * and uses Claude to find spelling mistakes with full context.
  *
  * SETUP (run once after Node 18 is installed):
  *   cd ~/Claude/files && npm install axios cheerio
  *
  * USAGE:
- *   node spell-check-agent.js                        # scans harmover.com
+ *   node spell-check-agent.js                        # prompts for target URL
  *   node spell-check-agent.js --url https://other.com # scans any site
  *   node spell-check-agent.js --max 50               # crawl up to 50 pages (default: 20)
  *   node spell-check-agent.js --save                 # also saves report as JSON

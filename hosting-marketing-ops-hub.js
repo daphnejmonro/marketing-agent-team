@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require("dotenv").config();
 
 /**
  * hosting.com Marketing Operations Hub
@@ -35,6 +36,7 @@ function loadData() {
 }
 
 const data = loadData();
+const TEAM_LEAD = data.team?.head_of_website_and_content || "Marketing Lead";
 
 const client = new Anthropic.default();
 
@@ -95,7 +97,7 @@ You oversee the 6-person content team and ensure:
 - Content quality gates (review cycle: 3-4 days target)
 - Keyword-content mapping (no gaps, no cannibalization)
 - Pillar-cluster architecture (semantic coherence)
-- GEO/LLM optimization (per Daphne's specialization)
+- GEO/LLM optimization (per team specialization)
 - Affiliate partner content (which pieces benefit top partners)
 - Publication velocity & demand-gen impact
 
@@ -224,7 +226,7 @@ async function operationsAgent(teamCapacity, strategicInitiatives) {
 
   const { breakdown } = data.team;
   const systemPrompt = `You are the Operations Director for hosting.com's marketing team.
-You manage a team of 16 (plus Daphne as Head of Website & Content):
+You manage a team of 16 (plus ${TEAM_LEAD} as Head of Website & Content):
 - ${breakdown.developers} developers
 - ${breakdown.cro} CRO specialist
 - ${breakdown.seo} SEO specialists
@@ -246,7 +248,7 @@ Your job:
 Operating constraints:
 - Content review cycle currently 4.2 days (target 3.5 days)
 - Dev team split between features + tech debt + performance
-- Daphne reports to C-suite on MRR, CAC, LTV, ROAS, organic conversion`;
+- ${TEAM_LEAD} reports to C-suite on MRR, CAC, LTV, ROAS, organic conversion`;
 
   const userPrompt = `Plan current quarter operations:
 
@@ -278,7 +280,7 @@ async function executiveAgent(kpis, initiatives, risks) {
   log.agent("Executive Affairs & Board Reporting");
 
   const systemPrompt = `You are the Chief Marketing Officer's strategic advisor.
-You prepare Daphne (Head of Website & Content) for board meetings and C-suite updates.
+You prepare ${TEAM_LEAD} (Head of Website & Content) for board meetings and C-suite updates.
 
 Your role:
 1. Synthesize KPI trends into board-ready narratives
@@ -295,7 +297,7 @@ Tone: Confident, data-driven, action-oriented. Board members are investors/execs
 - Risk management (what could go wrong?)`;
 
   const upcomingStr = data.upcoming && data.upcoming.length ? data.upcoming.join(", ") : "TBD";
-  const userPrompt = `Prepare board/exec update for Daphne:
+  const userPrompt = `Prepare board/exec update for ${TEAM_LEAD}:
 
 Current KPIs:
 ${kpis}
@@ -338,7 +340,7 @@ async function managerAgent(
 ) {
   log.agent("Manager Agent (Final Synthesis & Decision)");
 
-  const systemPrompt = `You are Daphne Monro's strategic advisor and decision-making partner.
+  const systemPrompt = `You are ${TEAM_LEAD}'s strategic advisor and decision-making partner.
 You review all domain experts (content, CRO, affiliate, ops, board) and provide ONE unified priority list.
 
 Your job:
@@ -346,7 +348,7 @@ Your job:
 2. Sequencing (what must happen first?)
 3. Trade-offs (ship fast vs. polish? invest in growth vs. optimize for margins?)
 4. Alignment (does every initiative support MRR growth + CAC reduction + organic conversion improvement?)
-5. Daphne's focus (what should she personally spend time on vs. delegate?)
+5. ${TEAM_LEAD}'s focus (what should they personally spend time on vs. delegate?)
 
 Output: A weekly priority list + monthly strategic roadmap, with clear ownership and timelines.`;
 
@@ -373,7 +375,7 @@ ${boardReport}
 ${competitorSection}
 
 Generate:
-1. This week's 5 priorities (Daphne's focus + team focus)
+1. This week's 5 priorities (${TEAM_LEAD}'s focus + team focus)
 2. This month's initiatives (ranked by impact on KPIs)
 3. Resource conflicts or resolutions
 4. Success criteria (how do we know we're winning?)

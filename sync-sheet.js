@@ -58,7 +58,11 @@ const config = fs.existsSync(CONFIG_PATH)
   ? JSON.parse(fs.readFileSync(CONFIG_PATH, "utf8"))
   : {};
 
-const SPREADSHEET_ID = config.spreadsheet_id || "1wMcBlumG0L8t_uZtWGR4ARJqhpe9SaK55-bPlKi3Ry4";
+const SPREADSHEET_ID = config.spreadsheet_id;
+if (!SPREADSHEET_ID) {
+  console.error("\x1b[31mError:\x1b[0m No spreadsheet_id set. Add it to sheet-config.json:\n  { \"spreadsheet_id\": \"YOUR_GOOGLE_SHEET_ID\" }");
+  process.exit(1);
+}
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 

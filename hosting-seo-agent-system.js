@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require("dotenv").config();
 
 /**
  * Multi-Agent SEO Operations System for hosting.com
@@ -275,7 +276,7 @@ Your decision framework (2026 SEO):
 Decision rules:
 - P0 technical issues that block ranking: fix before publishing new content
 - Content gaps with high search volume + low competition + high intent match: immediate content calendar
-- Competitive advantages: leverage Daphne's GEO/AEO expertise and agentic AI workflows
+- Competitive advantages: leverage the team's GEO/AEO expertise and agentic AI workflows
 - Risk management: flag outdated content, duplicate content, UX issues that increase bounce rate
 
 Return output:
@@ -307,7 +308,7 @@ Now:
 4. Project impact: which actions will move your top 3 KPIs (MRR, organic conversion %, ROAS)?
 5. Flag any technical debt that limits content scalability
 6. Suggest quick wins (existing pages that need small optimizations)
-7. Align content strategy with Daphne's GEO/LLM-optimized content expertise
+7. Align content strategy with GEO/LLM-optimized content expertise
 8. Identify which content will feed your affiliate programme (highest partner relevance)
 
 Format as a prioritized action plan with:

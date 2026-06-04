@@ -1,3 +1,4 @@
+require("dotenv").config();
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   Header, Footer, AlignmentType, HeadingLevel, BorderStyle, WidthType,
@@ -69,7 +70,7 @@ const titlePage = [
   })]})] }),
   spacer(480),
   new Paragraph({alignment:AlignmentType.CENTER, children:[run("hosting.com",{bold:true,size:28,color:BLUE,font:"Arial"})], ...sp(0,80)}),
-  new Paragraph({alignment:AlignmentType.CENTER, children:[run("Prepared by: Daphne Monro",{size:22,color:GREY_TEXT,font:"Arial"})], ...sp(0,60)}),
+  new Paragraph({alignment:AlignmentType.CENTER, children:[run("Prepared by: [Your Name]",{size:22,color:GREY_TEXT,font:"Arial"})], ...sp(0,60)}),
   new Paragraph({alignment:AlignmentType.CENTER, children:[run("Date: May 2026",{size:22,color:GREY_TEXT,font:"Arial"})], ...sp(0,60)}),
   new Paragraph({alignment:AlignmentType.CENTER, children:[run("Internal Use Only — Confidential",{size:18,color:"999999",font:"Arial",italics:true})]}),
   new Paragraph({children:[new PageBreak()]}),
@@ -264,8 +265,8 @@ const security = [
       ]}),
       new TableCell({ borders:noBdr, width:{size:Math.ceil(CONTENT_W/2),type:WidthType.DXA}, margins:{top:80,bottom:80,left:120,right:0}, children:[
         para(run("Prepared by",{bold:true,size:20})),
-        para(run("Name: Daphne Monro",{size:20}), sp(80,40)),
-        para(run("Title: Head of Website & Content",{size:20}), sp(0,40)),
+        para(run("Name: [Your Name]",{size:20}), sp(80,40)),
+        para(run("Title: [Your Title]",{size:20}), sp(0,40)),
         para(run("Date: May 2026",{size:20})),
       ]}),
     ]})]
@@ -348,6 +349,6 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync("/Users/daphnemonro/Claude/files/Agent-Setup-Security-Guide.docx", buf);
+  fs.writeFileSync(path.join(__dirname, "Agent-Setup-Security-Guide.docx"), buf);
   console.log("Done: Agent-Setup-Security-Guide.docx");
 });

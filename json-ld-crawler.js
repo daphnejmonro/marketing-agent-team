@@ -147,8 +147,13 @@ async function crawlUrl(browser, url) {
 async function main() {
   console.log('Starting JSON-LD crawler...');
 
-  // Use existing sheet
-  const sheetId = '1AwHnRN7yg9j1XNEDEqjkO7YHD-kPJAmu_tGN_VgYbUw';
+  const sheetIdArg = process.argv.find(a => a.startsWith("--sheet-id="));
+  const sheetId = sheetIdArg ? sheetIdArg.split("=")[1] : null;
+  if (!sheetId) {
+    console.error("Error: No Sheet ID provided. Use --sheet-id=YOUR_GOOGLE_SHEET_ID");
+    console.error("Example: node json-ld-crawler.js --sheet-id=1abc123...");
+    process.exit(1);
+  }
   console.log(`Writing to sheet: https://docs.google.com/spreadsheets/d/${sheetId}`);
 
   // Get URLs

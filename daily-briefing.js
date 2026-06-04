@@ -1,9 +1,10 @@
 #!/usr/bin/env node
+require("dotenv").config();
 
 /**
  * hosting.com Daily Briefing
  * 
- * Quick intelligence synthesis for Daphne's morning standup.
+ * Quick intelligence synthesis for your morning standup.
  * Run: node daily-briefing.js [--detailed] [--focus=seo|cro|content|affiliate]
  * 
  * Output: 5-10 minute read covering:
@@ -34,6 +35,7 @@ function loadData() {
 }
 
 const data = loadData();
+const TEAM_LEAD = data.team?.head_of_website_and_content || "Marketing Lead";
 
 const colors = {
   reset: "\x1b[0m",
@@ -69,7 +71,7 @@ async function generateBriefing(focusArea) {
   );
   console.log(`${colors.dim}${today}${colors.reset}\n`);
 
-  const systemPrompt = `You are Daphne's morning intelligence briefing AI.
+  const systemPrompt = `You are ${TEAM_LEAD}'s morning intelligence briefing AI.
 Synthesize the day ahead in 5 minutes (500-700 words). Be direct: lead with the most important item.
 
 Format:
@@ -106,7 +108,7 @@ Search Console data (${sc.date}):
 - Avg position: ${sc.avg_position}${scTop}
 ` : "Search Console data: not yet available (run node sync-sheet.js first).";
 
-  const userPrompt = `Generate Daphne's daily briefing for ${today}.
+  const userPrompt = `Generate ${TEAM_LEAD}'s daily briefing for ${today}.
 
 Context:
 - MRR: €${(kpis.mrr / 1000).toFixed(0)}k (target: grow ${kpis.mrr_growth_target_yoy_pct}% YoY) ✓ ${kpis.mrr_status}
@@ -125,7 +127,7 @@ ${scSection}
 
 ${focusArea !== "all" ? `Focus area: ${focusArea}` : ""}
 
-What should Daphne focus on TODAY to move the needle?`;
+What should ${TEAM_LEAD} focus on TODAY to move the needle?`;
 
   const briefing = await callClaude(systemPrompt, userPrompt);
   console.log(briefing);
@@ -140,7 +142,7 @@ async function generateDetailedAnalysis(focusArea) {
   );
 
   const analysisPrompts = {
-    seo: `You are Daphne's SEO strategist. Give her a 2-minute deep dive on:
+    seo: `You are the SEO strategist. Give a 2-minute deep dive on:
 1. GEO/LLM optimization opportunities for this quarter
 2. Top 3 technical SEO improvements needed
 3. Content clusters to develop
@@ -163,7 +165,7 @@ async function generateDetailedAnalysis(focusArea) {
   };
 
   const systemPrompt = `You are a strategic expert in ${focusArea}.
-Give Daphne 3-5 actionable insights with specific next steps.
+Give ${TEAM_LEAD} 3-5 actionable insights with specific next steps.
 Format: Issue | Root cause | Recommended action | Expected impact | Owner.`;
 
   const prompt =
