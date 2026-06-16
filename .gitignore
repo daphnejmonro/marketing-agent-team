@@ -1,0 +1,13 @@
+credentials.json
+data.json
+sheet-config.json
+competitor-intel.json
+spell-check-*.csv
+spell-check-report-*.json
+content/
+node_modules/
+.DS_Store
+.env
+*.docx
+*.html
+.claude/settings.local.json

@@ -1,0 +1,72 @@
+{
+  "company": "your-company.com",
+  "team": {
+    "total": 10,
+    "head_of_website_and_content": "Your Name",
+    "breakdown": {
+      "developers": 2,
+      "cro": 1,
+      "seo": 2,
+      "content_writers": 2,
+      "community": 1,
+      "product_marketing": 1,
+      "events": 1
+    }
+  },
+  "budget_monthly_eur": 0,
+  "kpis": {
+    "mrr": 0,
+    "mrr_growth_target_yoy_pct": 10,
+    "mrr_status": "on track",
+    "cac_actual": 0,
+    "cac_budget": 0,
+    "ltv": 0,
+    "ltv_cac_ratio": "0:1",
+    "roas_actual": 0,
+    "roas_target": 4.0,
+    "organic_traffic_monthly": 0,
+    "organic_conversion_pct": 0,
+    "organic_conversion_target_pct": 5.0,
+    "organic_conversion_plateau_since": "none",
+    "content_roi": "€0 per €1 spent"
+  },
+  "content": {
+    "output_this_month": 0,
+    "output_target_monthly": 16,
+    "review_cycle_days": 0,
+    "review_cycle_target_days": 3.5,
+    "pipeline_summary": "Describe your content pipeline status here"
+  },
+  "cro": {
+    "active_tests": 0,
+    "experiments_summary": "Describe active CRO experiments here"
+  },
+  "affiliate": {
+    "revenue_pct_mrr": 0,
+    "revenue_target_pct": 30,
+    "revenue_target_quarter": "Q4",
+    "revenue_eur_monthly": 0,
+    "revenue_target_eur_monthly": 0,
+    "top_partners": [
+      { "name": "partner-one.com", "revenue_30d_eur": 0, "commission_pct": 0 },
+      { "name": "partner-two.com", "revenue_30d_eur": 0, "commission_pct": 0 },
+      { "name": "partner-three.com", "revenue_30d_eur": 0, "commission_pct": 0 }
+    ]
+  },
+  "blockers": [
+    "Describe blocker 1 here",
+    "Describe blocker 2 here"
+  ],
+  "upcoming": [
+    "Upcoming event or milestone"
+  ],
+  "strategic_priorities": [
+    "Priority 1",
+    "Priority 2",
+    "Priority 3"
+  ],
+  "competitors": [
+    { "name": "competitor1.com", "homepage": "", "pricing": "" },
+    { "name": "competitor2.com", "homepage": "", "pricing": "" }
+  ]
+}
